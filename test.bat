@@ -1,5 +1,6 @@
 @echo off
 color E
-iverilog -o test.vvp apb_master.v apb_slave.v testbench.v
-vvp test.vvp
+iverilog -g2012 -o testbench.vvp testbench.sv
+vvp testbench.vvp
+gtkwave Lab1_tb.vcd
 pause
