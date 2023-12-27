@@ -22,19 +22,19 @@ parameter SETUP = 2'b01;
 parameter ACCESS = 2'b10;
 	
 function bit [31:0] OPERATION(input operation, input [31:0] A, input [31:0] B);
-begin
-	case(operation)
-	1'b0: begin 
-		OPERATION[31:0]=A[31:0]+B[31:0]; 
-		$display(" OPERATION + : OPERATION = %d, A = %d, B = %d" ,OPERATION, A, B); 
-	      end
-	1'b1: begin
-		 OPERATION[31:0]=A[31:0]-B[31:0]; 
-		 $display(" OPERATION - : OPERATION = %d, A = %d, B = %d" ,OPERATION, A, B); 
-	      end
-	default: begin OPERATION[31:0]<=A[31:0]+B[31:0]; end
-	endcase
-end
+    case(operation)
+       1'b0: begin 
+            OPERATION[31:0]=A[31:0]+B[31:0]; 
+            $display(" OPERATION + : OPERATION = %d, A = %d, B = %d" ,OPERATION, A, B); 
+        end
+       1'b1: begin 
+            OPERATION[31:0]=A[31:0]-B[31:0]; 
+            $display(" OPERATION - : OPERATION = %d, A = %d, B = %d" ,OPERATION, A, B); 
+        end
+        default: begin 
+            OPERATION[31:0] = A[31:0]+B[31:0]; 
+        end
+    endcase
 endfunction
 
 always@(posedge pclk or negedge preset)
